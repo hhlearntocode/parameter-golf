@@ -1,0 +1,13 @@
+status: candidate
+
+Why this run exists:
+- Test mild optimizer weight decay as one isolated follow-up from the baseline.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1111.
+- Final pre-quant validation was val_loss 2.2821 / val_bpb 1.3516.
+- Final int8+zlib roundtrip validation was val_loss 2.28606238 / val_bpb 1.35393491.
+- Quantized artifact size was 11880116 bytes.
+
+Decision:
+- keep as candidate; it improves on baseline post-quant val_bpb and also reduces quantized artifact size.

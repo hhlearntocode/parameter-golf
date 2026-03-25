@@ -1,0 +1,13 @@
+status: candidate
+
+Why this run exists:
+- Sweep stronger weight decay after the positive signal at WEIGHT_DECAY=0.04.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1097.
+- Last in-training validation before stop was val_loss 2.2927 / val_bpb 1.3579 (step 1000).
+- Final int8+zlib roundtrip validation was val_loss 2.28011397 / val_bpb 1.35041193.
+- Quantized artifact size was 11546163 bytes.
+
+Decision:
+- keep as candidate and current best in this 1-GPU loop; it improves post-quant val_bpb over both baseline and wd04 while reducing artifact size.

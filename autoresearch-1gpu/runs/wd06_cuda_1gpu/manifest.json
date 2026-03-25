@@ -1,0 +1,19 @@
+{
+  "run_id": "wd06_cuda_1gpu",
+  "base_commit": "4b5f19e5be76890831fa3eabf2623a6f4980b228",
+  "head_commit": "4b5f19e5be76890831fa3eabf2623a6f4980b228",
+  "target_file": "train_gpt.py",
+  "hypothesis": "A slightly stronger weight decay than 0.04 may further improve post-quant generalization under the fixed 1-GPU wallclock budget.",
+  "command": "RUN_ID=wd06_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.06 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd06_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.06",
+    "NPROC_PER_NODE": "1"
+  },
+  "status": "candidate",
+  "description": "Weight-decay sweep follow-up after wd04 candidate signal.",
+  "conclusion": "Keep as current best candidate: best post-quant val_bpb so far with a smaller quantized artifact."
+}
