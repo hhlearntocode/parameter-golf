@@ -13,7 +13,6 @@ logs/
 .cursor
 .hf-cache
 result.tsv
-*.int8.ptz
 *.pt
 *.pth
 *.ckpt
