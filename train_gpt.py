@@ -84,7 +84,7 @@ class Hyperparameters:
     beta1 = float(os.environ.get("BETA1", 0.9))
     beta2 = float(os.environ.get("BETA2", 0.95))
     adam_eps = float(os.environ.get("ADAM_EPS", 1e-8))
-    weight_decay = float(os.environ.get("WEIGHT_DECAY", 0.10))
+    weight_decay = float(os.environ.get("WEIGHT_DECAY", 0.09))
     grad_clip_norm = float(os.environ.get("GRAD_CLIP_NORM", 0.0))
 
 # -----------------------------
