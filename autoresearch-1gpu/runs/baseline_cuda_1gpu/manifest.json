@@ -1,0 +1,18 @@
+{
+  "run_id": "baseline_cuda_1gpu",
+  "base_commit": "NO_GIT_REPO",
+  "head_commit": "NO_GIT_REPO",
+  "target_file": "train_gpt.py",
+  "hypothesis": "Establish the required single-GPU CUDA baseline before any optimization experiments.",
+  "command": "RUN_ID=baseline_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "baseline_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "NPROC_PER_NODE": "1"
+  },
+  "status": "baseline",
+  "description": "Required baseline run on one local NVIDIA GPU.",
+  "conclusion": "Completed cleanly at the wallclock cap on 1 GPU; baseline post-quant val_bpb was 1.37055561 with a 12727054-byte int8+zlib artifact."
+}

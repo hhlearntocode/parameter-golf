@@ -1,0 +1,19 @@
+{
+  "run_id": "wd04_cuda_1gpu",
+  "base_commit": "NO_GIT_REPO",
+  "head_commit": "NO_GIT_REPO",
+  "target_file": "train_gpt.py",
+  "hypothesis": "Mild optimizer weight decay will improve generalization and post-quant robustness on the fixed 1-GPU wallclock budget.",
+  "command": "RUN_ID=wd04_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.04 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd04_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.04",
+    "NPROC_PER_NODE": "1"
+  },
+  "status": "pending",
+  "description": "Test mild optimizer weight decay as a single isolated change.",
+  "conclusion": "Pending run completion."
+}

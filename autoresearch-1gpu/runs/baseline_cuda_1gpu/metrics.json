@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.31412574,
+  "val_bpb": 1.37055561,
+  "pre_quant_val_loss": 2.3117,
+  "pre_quant_val_bpb": 1.3691,
+  "artifact_bytes": 12727054,
+  "code_bytes": 47686,
+  "train_time_ms": 600032,
+  "eval_time_ms": 11115,
+  "step_stop": 1107,
+  "notes": "Single-GPU CUDA baseline completed cleanly with wallclock cap stop and successful int8+zlib roundtrip validation."
+}

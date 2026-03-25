@@ -1,0 +1,13 @@
+status: baseline
+
+Why this run exists:
+- Establish the required single-GPU CUDA baseline before any optimization experiments.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1107.
+- Final pre-quant validation was val_loss 2.3117 / val_bpb 1.3691.
+- Final int8+zlib roundtrip validation was val_loss 2.31412574 / val_bpb 1.37055561.
+- Quantized artifact size was 12727054 bytes.
+
+Decision:
+- keep as the baseline reference for all follow-up 1-GPU comparisons.

@@ -1,1 +1,2 @@
 run_id	base_commit	head_commit	target_file	val_bpb	artifact_bytes	status	description
+baseline_cuda_1gpu	NO_GIT_REPO	NO_GIT_REPO	train_gpt.py	1.37055561	12727054	baseline	Required one-GPU CUDA baseline run.
