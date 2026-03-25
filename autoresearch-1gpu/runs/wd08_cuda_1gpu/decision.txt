@@ -1,0 +1,13 @@
+status: candidate
+
+Why this run exists:
+- Continue the successful weight-decay sweep after wd06 by testing a stronger regularization value.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1119.
+- Last in-training validation before stop was val_loss 2.2697 / val_bpb 1.3442.
+- Final int8+zlib roundtrip validation was val_loss 2.27546747 / val_bpb 1.34766001.
+- Quantized artifact size was 11306662 bytes.
+
+Decision:
+- keep as candidate and new current best in this 1-GPU loop; it improves post-quant val_bpb and artifact size over wd06.

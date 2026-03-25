@@ -1,0 +1,16 @@
+{
+  "run_id": "wd08_cuda_1gpu",
+  "base_commit": "c41aeaf19e982e794e725480f4972c6c63780f22",
+  "head_commit": "c41aeaf19e982e794e725480f4972c6c63780f22",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Increasing WEIGHT_DECAY from 0.06 to 0.08 may further improve post-quant robustness and artifact size under the same 10-minute wallclock budget.",
+  "command": "RUN_ID=wd08_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.08 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd08_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.08"
+  }
+}
