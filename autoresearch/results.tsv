@@ -1,0 +1,6 @@
+run_id	base_commit	head_commit	target_file	val_bpb	artifact_bytes	status	description
+2026-03-25_baseline_mlx_1shard_rerun1	0f5145101cc5639ea9e93c39635251ce5922190a	0f5145101cc5639ea9e93c39635251ce5922190a	train_gpt_mlx.py	0.0	0	crash	MLX Metal init crash before step 1 (NSRangeException).
+2026-03-25_baseline_mlx_1shard_rerun2	0f5145101cc5639ea9e93c39635251ce5922190a	0f5145101cc5639ea9e93c39635251ce5922190a	train_gpt_mlx.py	0.0	0	crash	MLX Metal init crash before step 1 (NSRangeException).
+2026-03-25_baseline_mlx_exactcmd	0f5145101cc5639ea9e93c39635251ce5922190a	0f5145101cc5639ea9e93c39635251ce5922190a	train_gpt_mlx.py	0.0	0	crash	Exact program.md baseline command; MLX Metal init crash before step 1 (NSRangeException).
+2026-03-25_baseline_mlx_exactcmd_rerun1	0f5145101cc5639ea9e93c39635251ce5922190a	0f5145101cc5639ea9e93c39635251ce5922190a	train_gpt_mlx.py	0.0	0	crash	Exact program.md baseline command rerun; MLX Metal init crash before step 1 (NSRangeException).
+2026-03-25_baseline_mlx_exactcmd_rerun2	0f5145101cc5639ea9e93c39635251ce5922190a	0f5145101cc5639ea9e93c39635251ce5922190a	train_gpt_mlx.py	0.0	0	crash	Exact program.md baseline command rerun; MLX Metal init crash before step 1 (NSRangeException).

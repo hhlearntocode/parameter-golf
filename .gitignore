@@ -9,3 +9,9 @@ data/docs_selected.jsonl
 .mypy_cache/
 .venv
 logs/
+*.log
+autoresearch/runs/*
+autoresearch-8gpu/runs/*
+.cursor
+.hf-cache
+result.tsv
