@@ -3,3 +3,5 @@ baseline_cuda_1gpu	NO_GIT_REPO	NO_GIT_REPO	train_gpt.py	1.37055561	12727054	base
 wd08_cuda_1gpu	c41aeaf19e982e794e725480f4972c6c63780f22	c41aeaf19e982e794e725480f4972c6c63780f22	train_gpt.py	1.34766001	11306662	candidate	WEIGHT_DECAY=0.08 improved post-quant val_bpb and artifact size vs wd06.
 wd04_cuda_1gpu	NO_GIT_REPO	NO_GIT_REPO	train_gpt.py	1.35393491	11880116	candidate	WEIGHT_DECAY=0.04 improved post-quant val_bpb and artifact size vs baseline.
 wd06_cuda_1gpu	4b5f19e5be76890831fa3eabf2623a6f4980b228	4b5f19e5be76890831fa3eabf2623a6f4980b228	train_gpt.py	1.35041193	11546163	candidate	WEIGHT_DECAY=0.06 improved post-quant val_bpb and artifact size vs wd04.
+wd10_cuda_1gpu	c41aeaf19e982e794e725480f4972c6c63780f22	c41aeaf19e982e794e725480f4972c6c63780f22	train_gpt.py	1.34741151	11019259	candidate	WEIGHT_DECAY=0.10 improved post-quant val_bpb and artifact size vs wd08.
+wd12_cuda_1gpu	c41aeaf19e982e794e725480f4972c6c63780f22	c41aeaf19e982e794e725480f4972c6c63780f22	train_gpt.py	NA	NA	crash	Interrupted by operator update before completion; no final quantized metrics produced.

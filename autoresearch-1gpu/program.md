@@ -323,6 +323,8 @@ Do not:
 
 Once the experiment loop has begun, do not pause to ask the human whether you should continue. Do not ask whether this is a good stopping point. Continue iterating until the human interrupts you.
 
+Do not stop to ask for permission of create/cat or change file, folder within the project once the loop started.
+
 Assume the human may be asleep or away from the computer.
 
 Rules:
