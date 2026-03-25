@@ -7,3 +7,4 @@ wd10_cuda_1gpu	c41aeaf19e982e794e725480f4972c6c63780f22	c41aeaf19e982e794e725480
 wd12_cuda_1gpu	c41aeaf19e982e794e725480f4972c6c63780f22	c41aeaf19e982e794e725480f4972c6c63780f22	train_gpt.py	NA	NA	crash	Interrupted by operator update before completion; no final quantized metrics produced.
 wd12_retry_cuda_1gpu	f63524b	f63524b	train_gpt.py	1.34886821	10743217	discard	WEIGHT_DECAY=0.12 retry completed; post-quant val_bpb regressed vs wd10.
 wd10_wd3600_cuda_1gpu	e2b183c71b25964a4723a8661337f74d32308e02	e2b183c71b25964a4723a8661337f74d32308e02	train_gpt.py	1.37749130	9569976	discard	WEIGHT_DECAY=0.10 + WARMDOWN_ITERS=3600 shrank artifact but severely regressed post-quant val_bpb.
+wd10_wd800_cuda_1gpu	e2b183c71b25964a4723a8661337f74d32308e02	e2b183c71b25964a4723a8661337f74d32308e02	train_gpt.py	1.34455455	11344287	candidate	WEIGHT_DECAY=0.10 + WARMDOWN_ITERS=800 improved post-quant val_bpb vs wd10.

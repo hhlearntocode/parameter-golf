@@ -1,0 +1,13 @@
+status: candidate
+
+Why this run exists:
+- Probe shorter warmdown after WARMDOWN_ITERS=3600 regressed, while keeping current best WEIGHT_DECAY=0.10.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1118.
+- Last in-training validation before stop was val_loss 2.2657 / val_bpb 1.3419.
+- Final int8+zlib roundtrip validation was val_loss 2.27022404 / val_bpb 1.34455455.
+- Quantized artifact size was 11344287 bytes.
+
+Decision:
+- keep as candidate and new current best in this 1-GPU loop; it improves post-quant val_bpb vs wd10 (1.34741151).

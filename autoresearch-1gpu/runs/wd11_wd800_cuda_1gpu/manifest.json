@@ -1,0 +1,17 @@
+{
+  "run_id": "wd11_wd800_cuda_1gpu",
+  "base_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "head_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "With warmdown tuned to 800, increasing WEIGHT_DECAY from 0.10 to 0.11 may further improve post-quant robustness without crossing into the 0.12 regression zone.",
+  "command": "RUN_ID=wd11_wd800_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.11 WARMDOWN_ITERS=800 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd11_wd800_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.11",
+    "WARMDOWN_ITERS": "800"
+  }
+}

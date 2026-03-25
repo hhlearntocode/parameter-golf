@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.27022404,
+  "val_bpb": 1.34455455,
+  "pre_quant_val_loss": 2.2657,
+  "pre_quant_val_bpb": 1.3419,
+  "artifact_bytes": 11344287,
+  "code_bytes": 48151,
+  "train_time_ms": 600473,
+  "eval_time_ms": 11063,
+  "step_stop": 1118,
+  "notes": "WEIGHT_DECAY=0.10 with WARMDOWN_ITERS=800 improved post-quant val_bpb versus wd10 while remaining under the artifact cap."
+}
