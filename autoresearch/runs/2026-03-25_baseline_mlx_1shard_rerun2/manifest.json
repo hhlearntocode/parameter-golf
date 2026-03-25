@@ -1,0 +1,17 @@
+{
+  "run_id": "2026-03-25_baseline_mlx_1shard_rerun2",
+  "base_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "head_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "target_file": "train_gpt_mlx.py",
+  "hypothesis": "Establish a reproducible MLX baseline run before any optimization changes.",
+  "command": "RUN_ID=2026-03-25_baseline_mlx_1shard_rerun2 DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 /Users/leonard/anaconda3/envs/env_ml/bin/python train_gpt_mlx.py",
+  "env": {
+    "RUN_ID": "2026-03-25_baseline_mlx_1shard_rerun2",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024"
+  },
+  "status": "crash",
+  "description": "Baseline rerun attempt on 1-shard local data.",
+  "conclusion": "Crashed before training start: MLX Metal device initialization raised NSRangeException."
+}

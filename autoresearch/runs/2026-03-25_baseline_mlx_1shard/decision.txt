@@ -1,0 +1,12 @@
+status: planned
+
+Why this run exists:
+- Establish the first trustworthy local baseline on `train_gpt_mlx.py` before any experiment changes.
+
+What happened:
+- `autoresearch/verify_setup.py` passed on 2026-03-25.
+- The local tokenizer and FineWeb sp1024 dataset directory are present, with 1 train shard and 1 val shard detected.
+- No training has been launched yet; this folder is prepared for the baseline run.
+
+Decision:
+- pending: run the command recorded in `manifest.json`, save stdout to `stdout.log`, then replace placeholders with actual metrics and a keep/discard judgment.

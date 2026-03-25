@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Execute the exact baseline command from program.md.
+
+What happened:
+- Process terminated before training started.
+- Crash trace shows MLX Metal device initialization failure (`NSRangeException`, empty device array).
+
+Decision:
+- crash: runtime environment issue; no training metrics produced.

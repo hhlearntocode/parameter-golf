@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Re-establish baseline on the default MLX target before testing any new optimization idea.
+
+What happened:
+- Process terminated before training started.
+- Crash trace shows MLX Metal device initialization failure (`NSRangeException`, empty device array).
+
+Decision:
+- crash: environment/runtime issue blocks MLX execution in this session; no model-quality conclusion can be drawn.

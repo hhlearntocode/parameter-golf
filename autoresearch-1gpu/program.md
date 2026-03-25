@@ -29,6 +29,16 @@ To set up a new research session on 1 GPU, do this first:
 
 Once setup passes, begin experimentation.
 
+Before starting the first experiment loop:
+
+1. Ensure you are on the shared research branch:
+   - `git checkout research`
+2. Confirm it tracks the remote branch:
+   - `git branch --set-upstream-to=origin/research research`
+   - if the upstream is already configured, leave it alone
+3. Treat `research` as the branch that should continuously advance when experiments win.
+4. Do not create throwaway local-only commits that never get pushed if they are being kept as the new best state.
+
 ## What You Can Edit
 
 Default research target:
@@ -148,6 +158,16 @@ The main score to record is the final post-quant roundtrip `val_bpb`.
 
 If the expected final lines are missing, treat the run as a crash unless the log clearly shows a completed alternative path.
 
+## Runtime Budget
+
+Each experiment should take about 10 minutes total, plus a small amount of startup and evaluation overhead.
+
+Rules:
+- the intended wallclock per run is approximately 10 minutes or less
+- if a run exceeds 10 minutes, kill it and treat it as a failure
+- after a timeout failure, discard the experiment and revert to the previous kept state
+- do not let a single bad run stall the loop
+
 ## 1-GPU Comparison Rules
 
 Keep the hardware setup fixed across comparisons.
@@ -200,19 +220,35 @@ Lower-priority or deferred axes:
 Once the baseline exists, loop forever:
 
 1. Look at the current git state and identify the current best baseline or candidate.
-2. Choose one narrow hypothesis from the allowed priority list.
-3. Edit only `train_gpt.py` unless explicitly approved otherwise.
-4. Save the exact diff for this run.
-5. Run the experiment with a fresh `RUN_ID`.
-6. Save the full stdout/stderr log to `autoresearch-1gpu/runs/<run_id>/stdout.log`.
-7. Parse the final metrics and write `metrics.json`.
-8. Write `decision.txt`.
-9. Append one row to `autoresearch-1gpu/results.tsv`.
-10. If the result is meaningfully better and reasonably clean, keep it and continue from there.
-11. If the result is equal or worse, discard it and continue from the previous best state.
-12. If the run crashed, record the crash and either retry once for a trivial bug or move on.
+2. Confirm you are on `research` before making the next experiment commit.
+3. Choose one narrow hypothesis from the allowed priority list.
+4. Edit only `train_gpt.py` unless explicitly approved otherwise.
+5. Save the exact diff for this run.
+6. Run the experiment with a fresh `RUN_ID`.
+7. Save the full stdout/stderr log to `autoresearch-1gpu/runs/<run_id>/stdout.log`.
+8. Parse the final metrics and write `metrics.json`.
+9. Write `decision.txt`.
+10. Append one row to `autoresearch-1gpu/results.tsv`.
+11. If the result is meaningfully better and reasonably clean, keep it and continue from there.
+12. Immediately push the kept commit to `origin research` so the remote branch stays current.
+13. If the result is equal or worse, discard it and continue from the previous best state.
+14. If the run crashed, record the crash and either retry once for a trivial bug or move on.
 
 Be persistent, but not reckless.
+
+## Git Push Rules
+
+The `research` branch is the authoritative advancing branch for this loop.
+
+Rules:
+- keep all experimental code commits on `research`
+- after every kept win, run `git push origin research`
+- if a losing experiment is reset away, do not push that losing state
+- do not push `autoresearch-1gpu/results.tsv`; leave it untracked locally
+- if a run crashes and you decide to keep a trivial bugfix before retrying, only push after there is a kept winning result
+- do not rewrite published history unless the human explicitly asks for it
+
+The remote branch should reflect the current best known code state, not every failed attempt.
 
 ## Candidate Promotion Rules
 
@@ -234,11 +270,12 @@ If a run crashes:
 - save the command and traceback
 - classify whether the failure was implementation-related or idea-related
 
-If the bug is trivial:
-- fix it and retry once
+If the crash is something dumb and easy to fix:
+- for example: a typo, missing import, obvious shape bug, or a simple OOM-inducing mistake
+- fix it and re-run once using your judgment
 
 If the idea is fundamentally unstable or causes repeated failure:
-- mark it `crash` or `discard`
+- mark it `crash` in `autoresearch-1gpu/results.tsv`
 - move on
 
 Do not get stuck on one bad direction.
@@ -285,6 +322,14 @@ Do not:
 ## Never Stop
 
 Once the experiment loop has begun, do not pause to ask the human whether you should continue. Do not ask whether this is a good stopping point. Continue iterating until the human interrupts you.
+
+Assume the human may be asleep or away from the computer.
+
+Rules:
+- do not ask for permission to continue once the loop is running
+- do not stop just because you need a new idea; think harder and keep going
+- if you run out of ideas, re-read the in-scope files, inspect prior records, combine near-misses, and try more radical but still disciplined changes
+- the loop runs indefinitely until it is manually interrupted
 
 If you run out of ideas:
 - re-read `train_gpt.py`

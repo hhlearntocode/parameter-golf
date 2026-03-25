@@ -1,0 +1,5 @@
+No code changes at setup time.
+
+`git diff --no-ext-diff -- train_gpt_mlx.py` was empty when this run folder was created, so the baseline is intended to execute the committed `train_gpt_mlx.py` at:
+
+0f5145101cc5639ea9e93c39635251ce5922190a

@@ -1,0 +1,10 @@
+status: baseline
+
+Why this run exists:
+- Replace with the purpose of the run.
+
+What happened:
+- Replace with a short factual outcome.
+
+Decision:
+- Replace with `keep`, `discard`, `candidate`, or `crash` and explain why.

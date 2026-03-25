@@ -1,0 +1,17 @@
+{
+  "run_id": "2026-03-25_baseline_mlx_exactcmd",
+  "base_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "head_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "target_file": "train_gpt_mlx.py",
+  "hypothesis": "Execute the baseline exactly as specified in program.md before any optimization changes.",
+  "command": "RUN_ID=baseline_mlx DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 /Users/leonard/anaconda3/envs/env_ml/bin/python /Users/leonard/ml-lab2/parameter-golf/train_gpt_mlx.py",
+  "env": {
+    "RUN_ID": "baseline_mlx",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024"
+  },
+  "status": "crash",
+  "description": "Exact baseline command run from program.md.",
+  "conclusion": "Crashed before training start: MLX Metal device initialization raised NSRangeException."
+}

@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Baseline establishment required by program.md using the exact baseline command.
+
+What happened:
+- Process aborted during MLX Metal initialization with NSRangeException before any training step or evaluation output.
+- No `step:...`, `final_int8_zlib_roundtrip`, or artifact-size metrics were emitted.
+
+Decision:
+- crash: implementation/environment-level failure during backend init; baseline remains unestablished.

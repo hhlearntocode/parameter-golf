@@ -1,0 +1,17 @@
+{
+  "run_id": "TEMPLATE_RUN",
+  "base_commit": "REPLACE_ME",
+  "head_commit": "REPLACE_ME",
+  "target_file": "train_gpt_mlx.py",
+  "hypothesis": "Replace with the single main idea being tested.",
+  "command": "Replace with the exact command used for the run.",
+  "env": {
+    "RUN_ID": "TEMPLATE_RUN",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024"
+  },
+  "status": "baseline",
+  "description": "Replace with a short description of the experiment.",
+  "conclusion": "Replace with a short conclusion after the run completes."
+}

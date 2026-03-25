@@ -1,0 +1,17 @@
+{
+  "run_id": "2026-03-25_baseline_mlx_exactcmd_rerun2",
+  "base_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "head_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "target_file": "train_gpt_mlx.py",
+  "hypothesis": "Establish a trustworthy baseline by running the exact command from program.md.",
+  "command": "RUN_ID=2026-03-25_baseline_mlx_exactcmd_rerun2 DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 /Users/leonard/anaconda3/envs/env_ml/bin/python /Users/leonard/ml-lab2/parameter-golf/train_gpt_mlx.py",
+  "env": {
+    "RUN_ID": "2026-03-25_baseline_mlx_exactcmd_rerun2",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024"
+  },
+  "status": "crash",
+  "description": "Exact program.md baseline command rerun; MLX Metal initialization crash before step 1.",
+  "conclusion": "Discard as a baseline metric source because no training/eval metrics were produced."
+}

@@ -1,0 +1,19 @@
+{
+  "run_id": "2026-03-25_baseline_mlx_1shard",
+  "base_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "head_commit": "0f5145101cc5639ea9e93c39635251ce5922190a",
+  "target_file": "train_gpt_mlx.py",
+  "hypothesis": "Establish a trustworthy local MLX baseline on the current one-shard FineWeb setup before testing any model changes.",
+  "command": "RUN_ID=2026-03-25_baseline_mlx_1shard DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 SEED=1337 MAX_WALLCLOCK_SECONDS=600 /Users/leonard/anaconda3/envs/env_ml/bin/python train_gpt_mlx.py",
+  "env": {
+    "RUN_ID": "2026-03-25_baseline_mlx_1shard",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "SEED": "1337",
+    "MAX_WALLCLOCK_SECONDS": "600"
+  },
+  "status": "planned",
+  "description": "Baseline MLX run on the locally available FineWeb sp1024 smoke-style dataset state (1 train shard present).",
+  "conclusion": "Setup complete; run not launched yet."
+}
