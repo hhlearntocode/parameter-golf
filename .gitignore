@@ -15,3 +15,8 @@ logs/
 result.tsv
 *.int8.ptz
 *.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+checkpoints/
