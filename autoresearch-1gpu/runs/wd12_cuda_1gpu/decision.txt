@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Continue the weight-decay sweep at WEIGHT_DECAY=0.12.
+
+What happened:
+- The run was terminated by SIGTERM before completion while applying updated operator instructions.
+- Last logged training line was step 10/20000; no wallclock stop or final int8+zlib roundtrip metrics were emitted.
+
+Decision:
+- crash; preserve logs and retry the same idea with a fresh run_id.

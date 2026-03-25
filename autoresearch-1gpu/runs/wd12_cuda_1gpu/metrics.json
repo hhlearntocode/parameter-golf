@@ -1,0 +1,12 @@
+{
+  "val_loss": null,
+  "val_bpb": null,
+  "pre_quant_val_loss": null,
+  "pre_quant_val_bpb": null,
+  "artifact_bytes": null,
+  "code_bytes": 48150,
+  "train_time_ms": 4980,
+  "eval_time_ms": null,
+  "step_stop": 10,
+  "notes": "Run was intentionally interrupted (SIGTERM) before completion to apply updated program instructions; no final quantized evaluation lines were produced."
+}
