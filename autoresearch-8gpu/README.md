@@ -1,40 +1,39 @@
-# Parameter Golf Autoresearch (8 GPU)
+# autoresearch
 
-This directory contains a separate research scaffold for running traceable CUDA autoresearch on `train_gpt.py` without touching the MLX-oriented `autoresearch/` flow.
+The idea: give an AI agent a small but real LLM training setup and let it experiment autonomously. It modifies the code, trains for the fixed challenge wallclock, checks whether the result improved, keeps or discards the change, and repeats. You wake up later to a log of experiments and, hopefully, a better model. This directory adapts that workflow to the CUDA path inside `parameter-golf`, centered on the challenge `train_gpt.py` script and an 8-GPU local `torchrun` loop. For the broader challenge rules, leaderboard, and submission format, see the main [`README.md`](../README.md).
 
-It is intended for machines that can run `torchrun --standalone --nproc_per_node=8 train_gpt.py`.
+## How it works
 
-## What Is Here
+The setup is deliberately kept small and only really has three paths that matter:
 
-- `program.md`: the operating prompt for the 8-GPU research agent
-- `results.tsv`: aggregate experiment table
-- `runs/TEMPLATE_RUN/`: per-run folder shape
-- `submission-template/`: clean submission metadata templates
-- `export-template/`: example final folder shape for a clean export
-- `verify_setup.py`: checks whether the scaffold, data, and visible NVIDIA GPUs are ready
-- `FEATURE_MATRIX.md`: verifies which core `autoresearch` features have been carried over
+- **`data/cached_challenge_fineweb.py`** - downloads the published FineWeb shards and tokenizer files used by the challenge.
+- **`train_gpt.py`** - the single file the agent edits. It contains the full model, optimizer, distributed training loop, evaluation, and artifact-size checks. This is the default research surface for the CUDA path.
+- **`autoresearch-8gpu/program.md`** - baseline instructions for one agent. Point your agent here and let it go.
 
-## Ready-To-Run Flow
+By design, training runs for a **fixed 10-minute time budget** by default. The main metric is **`val_bpb`** (validation bits per byte). Lower is better, and it matches the challenge scoring target.
 
-Run these steps at the start of the next session:
+Research bookkeeping lives under `autoresearch-8gpu/runs/` and `autoresearch-8gpu/results.tsv`, but the spirit is the same as the original repo: the human edits the operating instructions, and the agent iterates on the one main training file.
 
-1. Verify the scaffold, local data, and visible CUDA GPUs:
+## Quick start
+
+**Requirements:** A machine with 8 visible NVIDIA GPUs, Python 3.10+, and a fresh virtual environment.
 
 ```bash
-/Users/leonard/anaconda3/envs/env_ml/bin/python autoresearch-8gpu/verify_setup.py
-```
+# 1. Create and activate an environment
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 
-2. If data is missing, fetch it using the official repo path described in `data/README.md`.
+# 2. Install dependencies
+pip install -r requirements.txt
 
-Smoke-sized example:
+# 3. Download the challenge data and tokenizer files
+python3 data/cached_challenge_fineweb.py --variant sp1024 --train-shards 1
 
-```bash
-HF_HOME="$(pwd)/.hf-cache" /Users/leonard/anaconda3/envs/env_ml/bin/python data/cached_challenge_fineweb.py --variant sp1024 --train-shards 1
-```
+# 4. Verify the 8-GPU autoresearch scaffold
+python3 autoresearch-8gpu/verify_setup.py
 
-3. Establish the baseline on the CUDA research target:
-
-```bash
+# 5. Manually run a baseline CUDA experiment
 RUN_ID=baseline_cuda_8gpu \
 DATA_PATH=./data/datasets/fineweb10B_sp1024/ \
 TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model \
@@ -42,21 +41,42 @@ VOCAB_SIZE=1024 \
 torchrun --standalone --nproc_per_node=8 train_gpt.py
 ```
 
-4. Create a real run folder by copying `runs/TEMPLATE_RUN/` to a new `run_id`.
+If the commands above work, your CUDA autoresearch path is ready.
 
-5. Save the run log, metrics, decision, and patch into that folder, then append one row to `results.tsv`.
+For a larger training prefix, rerun the downloader without `--train-shards 1`. For dataset export and tokenizer rebuild details, see [`data/README.md`](../data/README.md).
 
-## Minimal Research Contract
+## Running the agent
 
-The intended research surface is:
-- `train_gpt.py`
+Spin up Claude, Codex, or your favorite coding agent in this repo and prompt it with something like:
 
-The intended final clean submission surface is:
-- a reconstructed folder under `records/...` containing only the exact code snapshot, logs, and metadata required by the challenge
+```text
+Hi, have a look at autoresearch-8gpu/program.md and let's kick off a new experiment. Let's do the setup first.
+```
 
-## Notes
+The `program.md` file is essentially a lightweight research skill, while `verify_setup.py`, `results.tsv`, and `runs/` provide the traceability layer around the original autoresearch loop.
 
-- This scaffold is intentionally separate from `autoresearch/`.
-- The research scaffold is allowed to be noisy.
-- The final submission must be clean.
-- A good candidate run is not the same thing as a final submission.
+## Project structure
+
+```text
+data/cached_challenge_fineweb.py   - challenge dataset downloader
+train_gpt.py                       - CUDA model, optimizer, and training loop
+autoresearch-8gpu/program.md       - agent instructions
+autoresearch-8gpu/verify_setup.py  - scaffold + GPU + data checks
+autoresearch-8gpu/results.tsv      - aggregate experiment log
+autoresearch-8gpu/runs/            - per-run logs, metrics, and patches
+requirements.txt                   - Python dependencies for the CUDA path
+```
+
+## Design choices
+
+- **Single file to modify.** The agent should normally only touch `train_gpt.py`. This keeps diffs small and experiments attributable.
+- **Fixed time budget.** Training defaults to the same 10-minute wallclock cap used by the challenge scripts. This makes iterations comparable under the real leaderboard constraint.
+- **Hardware-locked comparisons.** This path assumes 8 visible GPUs and keeps the research loop aligned with `torchrun --standalone --nproc_per_node=8`, so results are compared under one consistent distributed setup.
+
+## Platform support
+
+This folder is the CUDA autoresearch path for `parameter-golf`. If you want the local Apple Silicon / MLX loop that targets `train_gpt_mlx.py`, use [`../autoresearch/`](../autoresearch/README.md) instead.
+
+## License
+
+MIT
