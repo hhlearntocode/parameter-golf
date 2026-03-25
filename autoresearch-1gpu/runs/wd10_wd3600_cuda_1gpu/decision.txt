@@ -1,0 +1,13 @@
+status: discard
+
+Why this run exists:
+- Test whether extending warmdown duration improves post-quant quality while keeping the current best WEIGHT_DECAY=0.10.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1122.
+- Last in-training validation before stop was val_loss 2.2977 / val_bpb 1.3608.
+- Final int8+zlib roundtrip validation was val_loss 2.32583637 / val_bpb 1.37749130.
+- Quantized artifact size was 9569976 bytes.
+
+Decision:
+- discard; post-quant val_bpb regressed substantially versus wd10 (1.34741151), indicating WARMDOWN_ITERS=3600 over-anneals this 10-minute setup.

@@ -1,0 +1,17 @@
+{
+  "run_id": "wd10_wd800_cuda_1gpu",
+  "base_commit": "e2b183c71b25964a4723a8661337f74d32308e02",
+  "head_commit": "e2b183c71b25964a4723a8661337f74d32308e02",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "After strong regression at WARMDOWN_ITERS=3600, testing shorter warmdown (800) may preserve late optimization while avoiding over-annealing under the 10-minute cap.",
+  "command": "RUN_ID=wd10_wd800_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.10 WARMDOWN_ITERS=800 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd10_wd800_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.10",
+    "WARMDOWN_ITERS": "800"
+  }
+}

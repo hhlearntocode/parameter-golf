@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.32583637,
+  "val_bpb": 1.37749130,
+  "pre_quant_val_loss": 2.2977,
+  "pre_quant_val_bpb": 1.3608,
+  "artifact_bytes": 9569976,
+  "code_bytes": 48151,
+  "train_time_ms": 600108,
+  "eval_time_ms": 11038,
+  "step_stop": 1122,
+  "notes": "WEIGHT_DECAY=0.10 with WARMDOWN_ITERS=3600 completed cleanly but significantly worsened post-quant val_bpb despite reducing artifact size."
+}

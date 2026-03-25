@@ -1,0 +1,13 @@
+status: discard
+
+Why this run exists:
+- Retry WEIGHT_DECAY=0.12 after the previous run was interrupted.
+
+What happened:
+- The retry completed cleanly on 1 GPU and stopped at the wallclock cap after step 1103.
+- Last in-training validation before stop was val_loss 2.2694 / val_bpb 1.3441.
+- Final int8+zlib roundtrip validation was val_loss 2.27750747 / val_bpb 1.34886821.
+- Quantized artifact size was 10743217 bytes.
+
+Decision:
+- discard; post-quant val_bpb is worse than wd10 (1.34741151), even though artifact size is smaller.

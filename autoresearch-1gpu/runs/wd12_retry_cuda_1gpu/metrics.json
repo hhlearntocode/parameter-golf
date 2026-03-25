@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.27750747,
+  "val_bpb": 1.34886821,
+  "pre_quant_val_loss": 2.2694,
+  "pre_quant_val_bpb": 1.3441,
+  "artifact_bytes": 10743217,
+  "code_bytes": 48151,
+  "train_time_ms": 600318,
+  "eval_time_ms": 11053,
+  "step_stop": 1103,
+  "notes": "Retry of WEIGHT_DECAY=0.12 completed cleanly with wallclock cap stop and successful int8+zlib roundtrip validation."
+}
