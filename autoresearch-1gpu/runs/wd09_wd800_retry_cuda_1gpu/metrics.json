@@ -1,0 +1,12 @@
+{
+  "val_loss": null,
+  "val_bpb": null,
+  "pre_quant_val_loss": null,
+  "pre_quant_val_bpb": null,
+  "artifact_bytes": null,
+  "code_bytes": null,
+  "train_time_ms": null,
+  "eval_time_ms": null,
+  "step_stop": null,
+  "notes": "First nohup retry exited before training progress could be captured due launcher lifecycle instability in this execution environment."
+}

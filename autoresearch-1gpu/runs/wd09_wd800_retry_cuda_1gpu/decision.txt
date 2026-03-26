@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Retry wd09/wd800 under nohup after foreground interruption.
+
+What happened:
+- The launcher exited before a stable training process and log stream were established.
+- No useful training or final quantized metrics were emitted for this run_id.
+
+Decision:
+- crash; retried again with wd09_wd800_retry2_cuda_1gpu.

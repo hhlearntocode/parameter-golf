@@ -1,0 +1,17 @@
+{
+  "run_id": "wd09_wd700_cuda_1gpu",
+  "base_commit": "17bcad8a4f2489a7e4fb40280982e0ccba115f72",
+  "head_commit": "17bcad8a4f2489a7e4fb40280982e0ccba115f72",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Current best is WEIGHT_DECAY=0.09 with WARMDOWN_ITERS=800; test WARMDOWN_ITERS=700 to probe whether slightly shorter late annealing improves post-quant robustness.",
+  "command": "nohup bash -c 'RUN_ID=wd09_wd700_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=700 torchrun --standalone --nproc_per_node=1 train_gpt.py' > autoresearch-1gpu/runs/wd09_wd700_cuda_1gpu/stdout.log 2>&1 &",
+  "env": {
+    "RUN_ID": "wd09_wd700_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "700"
+  }
+}

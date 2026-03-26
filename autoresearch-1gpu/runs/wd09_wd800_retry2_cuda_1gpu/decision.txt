@@ -1,0 +1,13 @@
+status: candidate
+
+Why this run exists:
+- Second clean retry of wd09/wd800 after launch instability.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1123.
+- Last in-training validation before stop was val_loss 2.2651 / val_bpb 1.3415.
+- Final int8+zlib roundtrip validation was val_loss 2.26928639 / val_bpb 1.34399922.
+- Quantized artifact size was 11507230 bytes.
+
+Decision:
+- keep as candidate and new current best in this 1-GPU loop; it improves post-quant val_bpb vs wd10_wd800 (1.34455455).

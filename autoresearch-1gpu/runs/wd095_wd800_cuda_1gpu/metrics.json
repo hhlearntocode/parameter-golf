@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.27059643,
+  "val_bpb": 1.34477510,
+  "pre_quant_val_loss": 2.2663,
+  "pre_quant_val_bpb": 1.3422,
+  "artifact_bytes": 11417122,
+  "code_bytes": 48150,
+  "train_time_ms": 600347,
+  "eval_time_ms": 11066,
+  "step_stop": 1112,
+  "notes": "WEIGHT_DECAY=0.095 with WARMDOWN_ITERS=800 completed cleanly but did not beat the wd09_wd800_retry2 best run."
+}

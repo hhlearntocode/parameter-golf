@@ -1,0 +1,13 @@
+status: discard
+
+Why this run exists:
+- Test whether moving WEIGHT_DECAY from 0.10 to 0.11 helps after warmdown tuning to 800.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1107.
+- Last in-training validation before stop was val_loss 2.2679 / val_bpb 1.3432.
+- Final int8+zlib roundtrip validation was val_loss 2.27280213 / val_bpb 1.34608144.
+- Quantized artifact size was 11159653 bytes.
+
+Decision:
+- discard; post-quant val_bpb regressed vs wd10_wd800 (1.34455455).

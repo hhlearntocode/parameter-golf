@@ -1,0 +1,13 @@
+status: discard
+
+Why this run exists:
+- Fine-grained sweep between 0.09 and 0.10 after 0.09 became current best.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1112.
+- Last in-training validation before stop was val_loss 2.2663 / val_bpb 1.3422.
+- Final int8+zlib roundtrip validation was val_loss 2.27059643 / val_bpb 1.34477510.
+- Quantized artifact size was 11417122 bytes.
+
+Decision:
+- discard; post-quant val_bpb is worse than wd09_wd800_retry2 (1.34399922).

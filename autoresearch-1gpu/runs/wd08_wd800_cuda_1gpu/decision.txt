@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Test weaker regularization (WEIGHT_DECAY=0.08) with warmdown fixed at 800.
+
+What happened:
+- The run reached step 400 (train_time 212408ms) but failed to complete within the expected 10-minute budget.
+- It was terminated per timeout policy before any final int8+zlib roundtrip metrics were emitted.
+
+Decision:
+- crash; timeout failure, discard and continue from current best state.

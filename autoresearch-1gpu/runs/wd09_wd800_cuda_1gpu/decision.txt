@@ -1,0 +1,11 @@
+status: crash
+
+Why this run exists:
+- Test WEIGHT_DECAY=0.09 with WARMDOWN_ITERS=800 as a follow-up to wd11 regression.
+
+What happened:
+- Foreground execution reached step 200 and was then manually interrupted to switch to nohup launch mode.
+- No wallclock stop, serialization, or final int8+zlib roundtrip metrics were produced for this run_id.
+
+Decision:
+- crash; superseded by nohup retries with fresh run_ids.

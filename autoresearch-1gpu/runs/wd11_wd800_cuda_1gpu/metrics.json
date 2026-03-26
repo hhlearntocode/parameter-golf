@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.27280213,
+  "val_bpb": 1.34608144,
+  "pre_quant_val_loss": 2.2679,
+  "pre_quant_val_bpb": 1.3432,
+  "artifact_bytes": 11159653,
+  "code_bytes": 48150,
+  "train_time_ms": 600058,
+  "eval_time_ms": 11061,
+  "step_stop": 1107,
+  "notes": "WEIGHT_DECAY=0.11 with WARMDOWN_ITERS=800 completed cleanly but regressed slightly vs wd10_wd800."
+}

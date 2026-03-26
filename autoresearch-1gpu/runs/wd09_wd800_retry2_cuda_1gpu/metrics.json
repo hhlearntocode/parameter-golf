@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.26928639,
+  "val_bpb": 1.34399922,
+  "pre_quant_val_loss": 2.2651,
+  "pre_quant_val_bpb": 1.3415,
+  "artifact_bytes": 11507230,
+  "code_bytes": 48150,
+  "train_time_ms": 600590,
+  "eval_time_ms": 11080,
+  "step_stop": 1123,
+  "notes": "Second nohup retry completed cleanly and improved post-quant val_bpb vs wd10_wd800."
+}

@@ -1,0 +1,17 @@
+{
+  "run_id": "wd09_wd800_retry_cuda_1gpu",
+  "base_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "head_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Retry WEIGHT_DECAY=0.09 with WARMDOWN_ITERS=800 after nohup launch instability to measure whether decay below 0.10 improves post-quant val_bpb.",
+  "command": "nohup bash -c 'RUN_ID=wd09_wd800_retry_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=800 torchrun --standalone --nproc_per_node=1 train_gpt.py' > autoresearch-1gpu/runs/wd09_wd800_retry_cuda_1gpu/stdout.log 2>&1 &",
+  "env": {
+    "RUN_ID": "wd09_wd800_retry_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "800"
+  }
+}

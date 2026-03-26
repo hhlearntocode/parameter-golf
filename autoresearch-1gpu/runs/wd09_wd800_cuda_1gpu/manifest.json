@@ -1,0 +1,17 @@
+{
+  "run_id": "wd09_wd800_cuda_1gpu",
+  "base_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "head_commit": "684d7ee3cbc919d68185ef639cceb0e3c7111075",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "After seeing 0.11 regress, testing WEIGHT_DECAY=0.09 with warmdown 800 checks whether the optimum sits just below 0.10.",
+  "command": "RUN_ID=wd09_wd800_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=800 torchrun --standalone --nproc_per_node=1 train_gpt.py",
+  "env": {
+    "RUN_ID": "wd09_wd800_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "800"
+  }
+}

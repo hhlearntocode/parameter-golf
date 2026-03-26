@@ -1,0 +1,12 @@
+{
+  "val_loss": null,
+  "val_bpb": null,
+  "pre_quant_val_loss": null,
+  "pre_quant_val_bpb": null,
+  "artifact_bytes": null,
+  "code_bytes": null,
+  "train_time_ms": 212408,
+  "eval_time_ms": null,
+  "step_stop": 400,
+  "notes": "Run stopped manually after exceeding the 10-minute budget without producing final roundtrip metrics; likely hung after step 400."
+}

@@ -1,0 +1,12 @@
+{
+  "val_loss": null,
+  "val_bpb": null,
+  "pre_quant_val_loss": null,
+  "pre_quant_val_bpb": null,
+  "artifact_bytes": null,
+  "code_bytes": null,
+  "train_time_ms": 106371,
+  "eval_time_ms": null,
+  "step_stop": 200,
+  "notes": "Initial wd09/wd800 attempt was interrupted during launch-mode transition (foreground to nohup) before completion; no final roundtrip metrics were produced."
+}
