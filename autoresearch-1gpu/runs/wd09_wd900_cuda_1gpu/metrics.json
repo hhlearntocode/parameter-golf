@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.24931353,
+  "val_bpb": 1.33217017,
+  "pre_quant_val_loss": 2.2451,
+  "pre_quant_val_bpb": 1.3297,
+  "artifact_bytes": 11504626,
+  "code_bytes": 48150,
+  "train_time_ms": 600239,
+  "eval_time_ms": 11173,
+  "step_stop": 1350,
+  "notes": "WARMDOWN_ITERS=900 completed cleanly and improved post-quant val_bpb vs wd09_wd800_retry2."
+}

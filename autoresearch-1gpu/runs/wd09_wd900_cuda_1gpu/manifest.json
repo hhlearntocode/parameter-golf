@@ -1,7 +1,7 @@
 {
   "run_id": "wd09_wd900_cuda_1gpu",
-  "base_commit": "17bcad8a4f2489a7e4fb40280982e0ccba115f72",
-  "head_commit": "17bcad8a4f2489a7e4fb40280982e0ccba115f72",
+  "base_commit": "3002def7c0aead10109c39bf8ae0bce562b688b6",
+  "head_commit": "3002def7c0aead10109c39bf8ae0bce562b688b6",
   "target_file": "train_gpt.py",
   "gpu_count": 1,
   "hypothesis": "Current best uses WARMDOWN_ITERS=800 at WEIGHT_DECAY=0.09; test WARMDOWN_ITERS=900 to check if slightly longer annealing improves post-quant val_bpb.",

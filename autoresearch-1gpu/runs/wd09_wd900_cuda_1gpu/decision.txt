@@ -1,0 +1,14 @@
+status: candidate
+
+Why this run exists:
+- Current best used WARMDOWN_ITERS=800 at WEIGHT_DECAY=0.09.
+- This run tests whether a slightly longer warmdown improves post-quant quality.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1350.
+- Last in-training validation before stop was val_loss 2.2451 / val_bpb 1.3297.
+- Final int8+zlib roundtrip validation was val_loss 2.24931353 / val_bpb 1.33217017.
+- Quantized artifact size was 11504626 bytes.
+
+Decision:
+- keep as candidate and new current best in this 1-GPU loop; it improves post-quant val_bpb vs wd09_wd800_retry2 (1.34399922).
