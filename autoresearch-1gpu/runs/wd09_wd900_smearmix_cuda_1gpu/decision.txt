@@ -1,0 +1,15 @@
+status: candidate
+
+Why this run exists:
+- Current best used WD=0.09 and WARMDOWN_ITERS=900.
+- This run tests a modified SmearGate-style embedding mixer that blends toward the previous token and re-normalizes, rather than copying leaderboard code exactly.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1440.
+- The method was active with `smear_mix:enabled init:-2.50`.
+- Last in-training validation before stop was val_loss 2.2386 / val_bpb 1.3258.
+- Final int8+zlib roundtrip validation was val_loss 2.24272025 / val_bpb 1.32826526.
+- Quantized artifact size was 11518733 bytes.
+
+Decision:
+- keep as candidate and new current best in this 1-GPU loop; it improves post-quant val_bpb vs wd09_wd900 (1.33217017).

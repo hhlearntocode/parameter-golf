@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.24272025,
+  "val_bpb": 1.32826526,
+  "pre_quant_val_loss": 2.2386,
+  "pre_quant_val_bpb": 1.3258,
+  "artifact_bytes": 11518733,
+  "code_bytes": 49100,
+  "train_time_ms": 600262,
+  "eval_time_ms": 11272,
+  "step_stop": 1440,
+  "notes": "Modified SmearGate-style embedding mixer improved both pre-quant and post-quant quality while preserving a similar artifact size."
+}

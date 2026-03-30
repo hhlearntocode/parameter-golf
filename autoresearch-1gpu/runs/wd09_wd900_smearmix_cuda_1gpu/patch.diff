@@ -1,0 +1,72 @@
+diff --git a/train_gpt.py b/train_gpt.py
+index a3bdd67..1bc9709 100644
+--- a/train_gpt.py
++++ b/train_gpt.py
+@@ -86,6 +86,8 @@ class Hyperparameters:
+     adam_eps = float(os.environ.get("ADAM_EPS", 1e-8))
+     weight_decay = float(os.environ.get("WEIGHT_DECAY", 0.09))
+     grad_clip_norm = float(os.environ.get("GRAD_CLIP_NORM", 0.0))
++    smear_mix_enabled = bool(int(os.environ.get("SMEAR_MIX_ENABLED", "0")))
++    smear_mix_init = float(os.environ.get("SMEAR_MIX_INIT", -2.5))
+ 
+ # -----------------------------
+ # MUON OPTIMIZER 
+@@ -665,6 +667,8 @@ class GPT(nn.Module):
+         logit_softcap: float,
+         rope_base: float,
+         qk_gain_init: float,
++        smear_mix_enabled: bool,
++        smear_mix_init: float,
+     ):
+         super().__init__()
+         if logit_softcap <= 0.0:
+@@ -673,6 +677,11 @@ class GPT(nn.Module):
+         self.tied_embed_init_std = tied_embed_init_std
+         self.logit_softcap = logit_softcap
+         self.tok_emb = nn.Embedding(vocab_size, model_dim)
++        self.smear_mix_gate = (
++            nn.Parameter(torch.full((model_dim,), smear_mix_init, dtype=torch.float32))
++            if smear_mix_enabled
++            else None
++        )
+         self.num_encoder_layers = num_layers // 2
+         self.num_decoder_layers = num_layers - self.num_encoder_layers
+         self.num_skip_weights = min(self.num_encoder_layers, self.num_decoder_layers)
+@@ -706,6 +715,10 @@ class GPT(nn.Module):
+     def forward(self, input_ids: Tensor, target_ids: Tensor) -> Tensor:
+         x = self.tok_emb(input_ids)
+         x = F.rms_norm(x, (x.size(-1),))
++        if self.smear_mix_gate is not None:
++            prev_x = torch.cat((x[:, :1, :], x[:, :-1, :]), dim=1)
++            gate = torch.sigmoid(self.smear_mix_gate.to(dtype=x.dtype))[None, None, :]
++            x = F.rms_norm(x + gate * (prev_x - x), (x.size(-1),))
+         x0 = x
+         skips: list[Tensor] = []
+ 
+@@ -841,6 +854,8 @@ def main() -> None:
+         logit_softcap=args.logit_softcap,
+         rope_base=args.rope_base,
+         qk_gain_init=args.qk_gain_init,
++        smear_mix_enabled=args.smear_mix_enabled,
++        smear_mix_init=args.smear_mix_init,
+     ).to(device).bfloat16()
+     for module in base_model.modules():
+         if isinstance(module, CastedLinear):
+@@ -867,6 +882,8 @@ def main() -> None:
+     ]
+     if base_model.skip_weights.numel() > 0:
+         scalar_params.append(base_model.skip_weights)
++    if base_model.smear_mix_gate is not None:
++        scalar_params.append(base_model.smear_mix_gate)
+     token_lr = args.tied_embed_lr if args.tie_embeddings else args.embed_lr
+     optimizer_tok = torch.optim.AdamW(
+         [{"params": [base_model.tok_emb.weight], "lr": token_lr, "base_lr": token_lr}],
+@@ -919,6 +936,8 @@ def main() -> None:
+         f"max_wallclock_seconds:{args.max_wallclock_seconds:.3f}"
+     )
+     log0(f"seed:{args.seed}")
++    if args.smear_mix_enabled:
++        log0(f"smear_mix:enabled init:{args.smear_mix_init:.2f}")
+ 
+     # -----------------------------
+     # DATA LOADER & MODEL WARMUP
