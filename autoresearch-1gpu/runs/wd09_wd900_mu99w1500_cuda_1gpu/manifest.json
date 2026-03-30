@@ -1,0 +1,20 @@
+{
+  "run_id": "wd09_wd900_mu99w1500_cuda_1gpu",
+  "base_commit": "9b24f3c",
+  "head_commit": "9b24f3c",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Keep the current best WD=0.09 and warmdown=900, but use the record-style Muon momentum schedule of 0.92 to 0.99 over 1500 steps to improve post-quant val_bpb.",
+  "command": "RUN_ID=wd09_wd900_mu99w1500_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=900 MUON_MOMENTUM=0.99 MUON_MOMENTUM_WARMUP_START=0.92 MUON_MOMENTUM_WARMUP_STEPS=1500 torchrun --standalone --nproc_per_node=1 train_gpt.py > autoresearch-1gpu/runs/wd09_wd900_mu99w1500_cuda_1gpu/stdout.log 2>&1",
+  "env": {
+    "RUN_ID": "wd09_wd900_mu99w1500_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "900",
+    "MUON_MOMENTUM": "0.99",
+    "MUON_MOMENTUM_WARMUP_START": "0.92",
+    "MUON_MOMENTUM_WARMUP_STEPS": "1500"
+  }
+}

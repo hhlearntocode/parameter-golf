@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.25277709,
+  "val_bpb": 1.33422149,
+  "pre_quant_val_loss": 2.2482,
+  "pre_quant_val_bpb": 1.3315,
+  "artifact_bytes": 11472633,
+  "code_bytes": 48150,
+  "train_time_ms": 600424,
+  "eval_time_ms": 11203,
+  "step_stop": 1330,
+  "notes": "WARMDOWN_ITERS=1000 completed cleanly but slightly regressed post-quant val_bpb vs wd09_wd900."
+}

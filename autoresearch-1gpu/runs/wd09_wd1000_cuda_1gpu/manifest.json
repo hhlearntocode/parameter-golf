@@ -1,0 +1,17 @@
+{
+  "run_id": "wd09_wd1000_cuda_1gpu",
+  "base_commit": "9b24f3c",
+  "head_commit": "9b24f3c",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Current best uses WARMDOWN_ITERS=900 at WEIGHT_DECAY=0.09; test WARMDOWN_ITERS=1000 to check if slightly longer annealing further improves post-quant val_bpb.",
+  "command": "RUN_ID=wd09_wd1000_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=1000 torchrun --standalone --nproc_per_node=1 train_gpt.py > autoresearch-1gpu/runs/wd09_wd1000_cuda_1gpu/stdout.log 2>&1",
+  "env": {
+    "RUN_ID": "wd09_wd1000_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "1000"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.25237836,
+  "val_bpb": 1.33398534,
+  "pre_quant_val_loss": 2.2451,
+  "pre_quant_val_bpb": 1.3297,
+  "artifact_bytes": 11120850,
+  "code_bytes": 48150,
+  "train_time_ms": 600056,
+  "eval_time_ms": 11130,
+  "step_stop": 1399,
+  "notes": "Lower-LR recipe completed cleanly and shrank the artifact, but slightly regressed post-quant val_bpb vs wd09_wd900."
+}

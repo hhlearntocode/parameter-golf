@@ -1,0 +1,15 @@
+status: discard
+
+Why this run exists:
+- Current best used WD=0.09 and WARMDOWN_ITERS=900.
+- This run tests a custom tail-averaging method that only averages large matrix tensors late in warmdown.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1336.
+- Last in-training validation before stop was val_loss 2.2472 / val_bpb 1.3309.
+- Tail averaging applied 9 updates across 55 tracked tensors.
+- Final int8+zlib roundtrip validation was val_loss 2.29883722 / val_bpb 1.36150089.
+- Quantized artifact size was 11568724 bytes.
+
+Decision:
+- discard; the method badly regressed post-quant val_bpb vs wd09_wd900 (1.33217017), likely because averaging only large matrices broke alignment with the untouched small/control tensors.

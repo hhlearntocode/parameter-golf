@@ -1,0 +1,14 @@
+status: discard
+
+Why this run exists:
+- Current best used WD=0.09 and WARMDOWN_ITERS=900.
+- This run tests the lower-LR recipe from the records: MATRIX_LR=0.02, SCALAR_LR=0.02, TIED_EMBED_LR=0.03.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1399.
+- Last in-training validation before stop was val_loss 2.2451 / val_bpb 1.3297.
+- Final int8+zlib roundtrip validation was val_loss 2.25237836 / val_bpb 1.33398534.
+- Quantized artifact size was 11120850 bytes.
+
+Decision:
+- discard; it slightly regressed post-quant val_bpb vs wd09_wd900 (1.33217017) despite a smaller artifact.

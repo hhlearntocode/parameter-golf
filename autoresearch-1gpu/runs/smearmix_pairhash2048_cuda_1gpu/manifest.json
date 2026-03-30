@@ -1,0 +1,23 @@
+{
+  "run_id": "smearmix_pairhash2048_cuda_1gpu",
+  "base_commit": "c3ff7c0",
+  "head_commit": "c3ff7c0",
+  "target_file": "train_gpt.py",
+  "gpu_count": 1,
+  "hypothesis": "Keep the committed smear-mix winner, but add a smaller modified BigramHash-style residual using 2048 buckets and dim 64 with a learned scalar scale, to test cheap token-pair context without copying leaderboard settings directly.",
+  "command": "RUN_ID=smearmix_pairhash2048_cuda_1gpu DATA_PATH=./data/datasets/fineweb10B_sp1024/ TOKENIZER_PATH=./data/tokenizers/fineweb_1024_bpe.model VOCAB_SIZE=1024 WEIGHT_DECAY=0.09 WARMDOWN_ITERS=900 SMEAR_MIX_ENABLED=1 SMEAR_MIX_INIT=-2.5 PAIR_HASH_ENABLED=1 PAIR_HASH_BUCKETS=2048 PAIR_HASH_DIM=64 PAIR_HASH_INIT=0.05 torchrun --standalone --nproc_per_node=1 train_gpt.py > autoresearch-1gpu/runs/smearmix_pairhash2048_cuda_1gpu/stdout.log 2>&1",
+  "env": {
+    "RUN_ID": "smearmix_pairhash2048_cuda_1gpu",
+    "DATA_PATH": "./data/datasets/fineweb10B_sp1024/",
+    "TOKENIZER_PATH": "./data/tokenizers/fineweb_1024_bpe.model",
+    "VOCAB_SIZE": "1024",
+    "WEIGHT_DECAY": "0.09",
+    "WARMDOWN_ITERS": "900",
+    "SMEAR_MIX_ENABLED": "1",
+    "SMEAR_MIX_INIT": "-2.5",
+    "PAIR_HASH_ENABLED": "1",
+    "PAIR_HASH_BUCKETS": "2048",
+    "PAIR_HASH_DIM": "64",
+    "PAIR_HASH_INIT": "0.05"
+  }
+}

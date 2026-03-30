@@ -1,0 +1,14 @@
+status: discard
+
+Why this run exists:
+- Current best used WD=0.09 and WARMDOWN_ITERS=900.
+- This run tests a record-style Muon schedule: momentum warmup from 0.92 to 0.99 over 1500 steps.
+
+What happened:
+- The run completed cleanly on 1 GPU and stopped at the wallclock cap after step 1373.
+- Last in-training validation before stop was val_loss 2.2473 / val_bpb 1.3310.
+- Final int8+zlib roundtrip validation was val_loss 2.25059852 / val_bpb 1.33293121.
+- Quantized artifact size was 11796808 bytes.
+
+Decision:
+- discard; it slightly regressed post-quant val_bpb vs wd09_wd900 (1.33217017) and increased artifact size.

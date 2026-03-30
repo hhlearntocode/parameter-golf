@@ -1,0 +1,12 @@
+{
+  "val_loss": 2.29883722,
+  "val_bpb": 1.36150089,
+  "pre_quant_val_loss": 2.2472,
+  "pre_quant_val_bpb": 1.3309,
+  "artifact_bytes": 11568724,
+  "code_bytes": 51078,
+  "train_time_ms": 602877,
+  "eval_time_ms": 11160,
+  "step_stop": 1336,
+  "notes": "Custom late-run averaging of large matrices only caused a large post-quant regression despite strong pre-quant validation."
+}
